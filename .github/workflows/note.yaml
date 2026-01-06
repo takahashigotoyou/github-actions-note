@@ -68,11 +68,17 @@ jobs:
 
       - name: Install Claude Code SDK
         run: |
+          cd $GITHUB_WORKSPACE
           npm init -y
           npm i @anthropic-ai/claude-code
+          ls -la node_modules/@anthropic-ai || true
+
 
       - name: Research with Claude Code SDK
         run: |
+          cd $GITHUB_WORKSPACE
+          node -v
+          ls -la
           cat > research.mjs <<'EOF'
           import { query } from '@anthropic-ai/claude-code';
           import fs from 'fs';
